@@ -1,0 +1,134 @@
+.footer {
+  background: #070C1A;
+  border-top: 1px solid rgba(79,142,247,0.1);
+  padding: 80px 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow1 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -200px;
+  background: radial-gradient(circle, rgba(79,142,247,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.logo {
+  font-size: 28px;
+  background: linear-gradient(135deg, #4F8EF7, #7C5CFC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brandName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+}
+
+.tagline {
+  color: #64748B;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 280px;
+}
+
+.socials { display: flex; flex-direction: column; gap: 8px; }
+
+.socialLink {
+  color: #94A3B8;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.socialLink:hover { color: #4F8EF7; }
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #4F8EF7;
+  margin-bottom: 4px;
+}
+
+.col a {
+  color: #64748B;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.col a:hover { color: white; }
+
+.bottom {
+  max-width: 1200px;
+  margin: 60px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.bottom p {
+  color: #475569;
+  font-size: 13px;
+}
+
+.builtWith {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.heart {
+  color: #EF4444;
+  fill: #EF4444;
+}
+
+@media (max-width: 900px) {
+  .inner { grid-template-columns: 1fr; gap: 48px; }
+}
+
+@media (max-width: 600px) {
+  .links { grid-template-columns: repeat(2, 1fr); }
+  .bottom { flex-direction: column; text-align: center; }
+}
