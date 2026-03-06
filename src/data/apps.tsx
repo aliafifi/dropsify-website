@@ -1,16 +1,35 @@
-import { Layers, ShieldCheck, BarChart3, Video, RefreshCcw, Factory } from 'lucide-react';
+import { ShieldCheck, BarChart3, Video, RefreshCcw, Factory } from 'lucide-react';
 
-export const apps = [
+export interface AppData {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  icon: JSX.Element | null;
+  image?: string;
+  color: string;
+  colorLight: string;
+  price: string;
+  status: 'live' | 'coming-soon';
+  link?: string;
+  tags: string[];
+  stats: { merchants: string; rating: string; savings: string };
+  features: string[];
+}
+
+export const apps: AppData[] = [
   {
     id: 'copyflow',
+    icon: null,
     name: 'CopyFlow AI',
     tagline: 'AI Product Description Writer',
     description: 'Bulk-rewrite hundreds of product descriptions in seconds. Brand voice training, SEO optimization, and AliExpress review mining built in.',
-    icon: <Layers size={24} />,
+    image: '/copyflow-logo.png',
     color: '#4F8EF7',
     colorLight: 'rgba(79,142,247,0.12)',
     price: '$19.99/mo',
-    status: 'coming-soon',
+    status: 'live',
+    link: 'https://apps.shopify.com/copyflow-ai',
     tags: ['AI', 'SEO', 'Content'],
     stats: { merchants: '2,400+', rating: '4.9', savings: '60hrs/mo' },
     features: [

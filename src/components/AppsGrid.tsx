@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { apps } from '@/data/apps';
 import styles from './AppsGrid.module.css';
 
@@ -22,10 +23,14 @@ export default function AppsGrid() {
             <div key={app.id} className={styles.card} style={{ '--accent': app.color, '--accent-light': app.colorLight } as React.CSSProperties}>
               <div className={styles.cardTop}>
                 <div className={styles.iconWrap} style={{ background: app.colorLight }}>
-                  <span className={styles.icon}>{app.icon}</span>
+                  {app.image ? (
+                    <img src={app.image} alt={`${app.name} icon`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' }} />
+                  ) : (
+                    <span className={styles.icon}>{app.icon}</span>
+                  )}
                 </div>
                 <span className={styles.status}>
-                  {app.status === 'coming-soon' ? '🔜 Coming Soon' : '✅ Live'}
+                  {app.status === 'coming-soon' ? '🔜 Coming Soon' : '🚀 Live'}
                 </span>
               </div>
 
@@ -52,7 +57,11 @@ export default function AppsGrid() {
                     <span key={t} className={styles.tag}>{t}</span>
                   ))}
                 </div>
-                <span className={styles.price}>{app.price}</span>
+                {app.status === 'live' ? (
+                  <a href={app.link || '#'} target="_blank" rel="noopener noreferrer" style={{ background: '#fff', color: '#000', padding: '6px 14px', borderRadius: '20px', textDecoration: 'none', fontWeight: 'bold', fontSize: '13px' }}>Install App</a>
+                ) : (
+                  <span className={styles.price}>{app.price}</span>
+                )}
               </div>
 
               <div className={styles.glow2} style={{ background: `radial-gradient(circle, ${app.colorLight}, transparent 70%)` }}></div>
