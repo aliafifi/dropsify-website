@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Note that some adapters may set a maximum length for the String type by default, please ensure your strings are long
+// enough when changing adapters.
+// See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id                  String    @id
+  shop                String
+  state               String
+  isOnline            Boolean   @default(false)
+  scope               String?
+  expires             DateTime?
+  accessToken         String
+  userId              BigInt?
+  firstName           String?
+  lastName            String?
+  email               String?
+  accountOwner        Boolean   @default(false)
+  locale              String?
+  collaborator        Boolean?  @default(false)
+  emailVerified       Boolean?  @default(false)
+  refreshToken        String?
+  refreshTokenExpires DateTime?
+}
+
+model MerchantSettings {
+  id          String @id @default(cuid())
+  shop        String @unique
+  billingPlan String @default("basic") // basic, pro, elite
+
+  twilioSid       String?
+  twilioAuthToken String?
+  twilioPhone     String?
+  twilioChannel   String  @default("sms") // sms, whatsapp
+
+  aiProvider String  @default("openrouter") // openrouter, openai, anthropic
+  aiApiKey   String?
+  aiModel    String  @default("mistralai/mistral-7b-instruct:free")
+
+  systemPrompt String?  @default("You are a helpful customer service assistant. A user has left items in their cart. Negotiate a 10% discount to securely close the sale. Keep it short and conversational.")
+  isActive     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model CartRecoveryEvent {
+  id             String   @id @default(cuid())
+  shop           String
+  checkoutToken  String   @unique
+  customerPhone  String
+  cartContents   String
+  cartTotal      String
+  recoveryStatus String   @default("PENDING") // PENDING, RECOVERED, FAILED
+  messages       String // JSON stringified chat history
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
