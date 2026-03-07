@@ -1,225 +1,85 @@
 .hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
   position: relative;
-  overflow: hidden;
-  padding: 100px 24px 60px;
-}
-
-.glow1 {
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  left: -200px;
-  top: -200px;
-  background: radial-gradient(circle, rgba(79,142,247,0.12), transparent 70%);
-  pointer-events: none;
-}
-
-.glow2 {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  right: -150px;
-  bottom: -100px;
-  background: radial-gradient(circle, rgba(124,92,252,0.1), transparent 70%);
-  pointer-events: none;
-}
-
-.grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(79,142,247,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79,142,247,0.04) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 8rem 2rem 6rem;
   text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 60vh;
+  justify-content: center;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 60%);
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.content {
   position: relative;
   z-index: 1;
-  width: 100%;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #4F8EF7;
-  background: rgba(79,142,247,0.1);
-  border: 1px solid rgba(79,142,247,0.2);
-  padding: 8px 16px;
-  border-radius: 100px;
-  margin-bottom: 32px;
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.dot {
-  width: 6px;
-  height: 6px;
-  background: #10B981;
-  border-radius: 50%;
-  animation: pulse-glow 2s ease infinite;
-  display: inline-block;
-}
-
-.logoWrapper {
-  margin-bottom: 24px;
-  animation: float 4s ease-in-out infinite;
-}
-
-.logo {
-  filter: drop-shadow(0 0 30px rgba(79,142,247,0.4));
+  max-width: 900px;
+  animation: fadeIn 1s ease-out;
 }
 
 .title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(42px, 7vw, 76px);
+  font-size: 4.5rem;
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-  animation: fadeInUp 0.8s ease 0.1s both;
-}
-
-.gradient {
-  background: linear-gradient(135deg, #4F8EF7 0%, #7C5CFC 50%, #22D3EE 100%);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% auto;
-  animation: shimmer 4s linear infinite;
-}
-
-@keyframes shimmer {
-  0%   { background-position: 0% center; }
-  100% { background-position: 200% center; }
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  font-size: clamp(16px, 2.5vw, 20px);
-  color: #94A3B8;
-  line-height: 1.7;
-  max-width: 580px;
-  margin: 0 auto 40px;
-  animation: fadeInUp 0.8s ease 0.2s both;
+  font-size: 1.25rem;
+  color: #9ca3af;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-inline: auto;
+  line-height: 1.6;
 }
 
-.actions {
+.ctaGrid {
   display: flex;
-  align-items: center;
+  gap: 1rem;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-  animation: fadeInUp 0.8s ease 0.3s both;
 }
 
-.btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #4F8EF7, #7C5CFC);
+.primaryBtn {
+  background: #6366f1;
   color: white;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 16px 32px;
-  border-radius: 14px;
-  text-decoration: none;
-  transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(79,142,247,0.3);
-}
-
-.btnPrimary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(79,142,247,0.5);
-}
-
-.btnSecondary {
-  display: inline-flex;
-  align-items: center;
-  color: #94A3B8;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
   font-weight: 600;
-  font-size: 16px;
-  padding: 15px 32px;
-  border-radius: 14px;
   text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
 }
 
-.btnSecondary:hover {
-  color: white;
-  border-color: rgba(79,142,247,0.4);
-  background: rgba(79,142,247,0.08);
+.primaryBtn:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
 }
 
-.trust {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: #475569;
-  font-size: 13px;
-  margin-bottom: 60px;
-  flex-wrap: wrap;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Floating notification cards */
-.floatingCards {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  animation: fadeInUp 0.8s ease 0.5s both;
-}
-
-.fCard {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(15, 22, 41, 0.9);
-  border: 1px solid rgba(79,142,247,0.15);
-  border-radius: 14px;
-  padding: 14px 20px;
-  backdrop-filter: blur(10px);
-  font-size: 13px;
-  text-align: left;
-}
-
-.fCard span { font-size: 22px; }
-
-.fCardTitle {
-  font-weight: 600;
-  color: white;
-  margin-bottom: 2px;
-}
-
-.fCardSub { color: #64748B; }
-
-.fCard1 { animation: float 5s ease-in-out infinite; }
-.fCard2 { animation: float 5s ease-in-out 1s infinite; }
-.fCard3 { animation: float 5s ease-in-out 2s infinite; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
-  50%       { opacity: 0.8; box-shadow: 0 0 0 4px rgba(16,185,129,0); }
+@media (max-width: 768px) {
+  .title { font-size: 3rem; }
+  .subtitle { font-size: 1.125rem; }
 }

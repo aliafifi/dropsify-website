@@ -1,17 +1,18 @@
-import Hero from '@/components/Hero';
-import AppsGrid from '@/components/AppsGrid';
-import Stats from '@/components/Stats';
-import About from '@/components/About';
-import Roadmap from '@/components/Roadmap';
+import Hero from '../components/Hero';
+import AppShowcase from '../components/AppShowcase';
+import Footer from '../components/Footer';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <>
+    <main style={{
+      minHeight: '100vh',
+      background: '#09090b',
+      color: 'white',
+      fontFamily: 'Inter, sans-serif'
+    }}>
       <Hero />
-      <Stats />
-      <AppsGrid />
-      <About />
-      <Roadmap />
-    </>
+      <AppShowcase />
+      <Footer />
+    </main>
   );
 }
