@@ -1,3 +1,4 @@
+import React from 'react';
 import { ShieldCheck, BarChart3, Video, RefreshCcw, Factory } from 'lucide-react';
 
 export interface AppData {
@@ -5,7 +6,7 @@ export interface AppData {
   name: string;
   tagline: string;
   description: string;
-  icon: JSX.Element | null;
+  icon: React.ReactNode;
   image?: string;
   color: string;
   colorLight: string;
