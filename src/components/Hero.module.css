@@ -32,16 +32,16 @@
 }
 
 .brandName {
-  font-size: 1.125rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.35em;
   background: linear-gradient(135deg, #818cf8 0%, #c7d2fe 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-  margin-left: 0.3em; /* offset for letter-spacing to center correctly */
+  margin-bottom: 1.25rem;
+  margin-left: 0.35em; /* offset for letter-spacing to center correctly */
 }
 
 .title {
