@@ -2,7 +2,7 @@
 
 client_id = "6d000a85f99924fe7c3f6be566cb2283"
 name = "cartrecovery-ai"
-application_url = "https://osogwcckos4g8s840s4c8s8s.194.163.157.124.sslip.io"
+application_url = "https://app.dropsify.shop"
 embedded = true
 
 [build]
@@ -10,6 +10,11 @@ automatically_update_urls_on_dev = true
 
 [webhooks]
 api_version = "2026-04"
+
+  [webhooks.privacy_compliance]
+  customer_deletion_url = "https://app.dropsify.shop/webhooks/customers/redact"
+  customer_data_request_url = "https://app.dropsify.shop/webhooks/customers/data_request"
+  shop_deletion_url = "https://app.dropsify.shop/webhooks/shop/redact"
 
   [[webhooks.subscriptions]]
   topics = [ "app/uninstalled" ]
@@ -24,4 +29,4 @@ api_version = "2026-04"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://osogwcckos4g8s840s4c8s8s.194.163.157.124.sslip.io/auth/callback", "https://osogwcckos4g8s840s4c8s8s.194.163.157.124.sslip.io/auth/shopify/callback", "https://osogwcckos4g8s840s4c8s8s.194.163.157.124.sslip.io/api/auth/callback" ]
+redirect_urls = [ "https://app.dropsify.shop/auth/callback", "https://app.dropsify.shop/auth/shopify/callback", "https://app.dropsify.shop/api/auth/callback" ]
