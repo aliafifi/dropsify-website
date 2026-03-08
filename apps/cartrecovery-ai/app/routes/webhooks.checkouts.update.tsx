@@ -45,6 +45,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const activeTwilioToken = settings.billingPlan === "basic" ? settings.twilioAuthToken : process.env.MASTER_TWILIO_TOKEN;
   const activeTwilioPhone = settings.billingPlan === "basic" ? settings.twilioPhone : process.env.MASTER_TWILIO_PHONE;
   const activeAiKey = settings.billingPlan === "basic" ? settings.aiApiKey : process.env.MASTER_AI_KEY;
+  const activeAiProvider = settings.billingPlan === "basic" ? settings.aiProvider : (process.env.MASTER_AI_PROVIDER || "openai");
+  const activeAiModel = settings.billingPlan === "basic" ? settings.aiModel : (process.env.MASTER_AI_MODEL || "gpt-4o-mini");
 
   if (!activeTwilioSid || !activeTwilioToken || !activeAiKey) {
      console.log(`[${shop}] Missing valid active API keys.`);
@@ -69,7 +71,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   // Initialize OpenAI Client (OpenAI SDK can connect to OpenAI, OpenRouter, and mostly Anthropic now)
   let baseURL = undefined;
-  if (settings.aiProvider === "openrouter") baseURL = "https://openrouter.ai/api/v1";
+  if (activeAiProvider === "openrouter") baseURL = "https://openrouter.ai/api/v1";
   
   const openai = new OpenAI({
     baseURL,
@@ -79,7 +81,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   try {
     // Generate the opening message using the Merchant's System Prompt
     const completion = await openai.chat.completions.create({
-      model: settings.aiModel || "mistralai/mistral-7b-instruct:free",
+      model: activeAiModel || "gpt-4o-mini",
       messages: [
         { role: "system", content: settings.systemPrompt || "You are a helpful assistant." },
         { 

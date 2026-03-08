@@ -48,6 +48,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   }
 
   const activeAiKey = settings.billingPlan === "basic" ? settings.aiApiKey : process.env.MASTER_AI_KEY;
+  const activeAiProvider = settings.billingPlan === "basic" ? settings.aiProvider : (process.env.MASTER_AI_PROVIDER || "openai");
+  const activeAiModel = settings.billingPlan === "basic" ? settings.aiModel : (process.env.MASTER_AI_MODEL || "gpt-4o-mini");
 
   if (!activeAiKey) {
      console.log(`[Twilio Inbound] Missing active AI keys.`);
@@ -62,7 +64,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const newHistory = [...history, { role: "user", content: incomingMessage }];
 
   let baseURL = undefined;
-  if (settings.aiProvider === "openrouter") baseURL = "https://openrouter.ai/api/v1";
+  if (activeAiProvider === "openrouter") baseURL = "https://openrouter.ai/api/v1";
 
   // Call AI to generate response
   const openai = new OpenAI({
@@ -73,7 +75,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   let aiResponseText = "";
   try {
     const completion = await openai.chat.completions.create({
-      model: settings.aiModel || "mistralai/mistral-7b-instruct:free",
+      model: activeAiModel || "gpt-4o-mini",
       messages: [
         { role: "system", content: settings.systemPrompt || "You are a helpful assistant trying to save an abandoned cart." },
         ...newHistory
